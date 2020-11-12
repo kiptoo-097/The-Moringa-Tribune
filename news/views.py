@@ -1,11 +1,8 @@
 from django.shortcuts import render,redirect
-from django import forms
 from django.http import HttpResponse,Http404
 import datetime as dt
 from .models import Article
-from cloudinary.forms import cl_init_js_callbacks      
-from .models import Photo
-from .forms import PhotoForm
+
 
 
 # Create your views here.
@@ -54,13 +51,3 @@ def article(request,article_id):
     return render(request,"all-news/article.html", {"article":article})
 
 
-def upload(request):
-  context = dict( backend_form = PhotoForm())
-
-  if request.method == 'POST':
-    form = PhotoForm(request.POST, request.FILES)
-    context['posted'] = form.instance
-    if form.is_valid():
-        form.save()
-
-  return render(request, 'all-news/upload.html', context)    

@@ -1,6 +1,6 @@
 from django.db import models
 import datetime as dt
-from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 class Editor(models.Model):
@@ -56,6 +56,3 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title    
-
-class Photo(models.Model):
-  image = CloudinaryField('image')
